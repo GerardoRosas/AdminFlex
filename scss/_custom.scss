@@ -11,6 +11,7 @@ html {
 body {
     font-family: $fuente_principal;
     height: 100%;
+    background-color: $gris;
 }
 img {
     max-width: 100%;
@@ -20,6 +21,11 @@ img {
 }
 .oculto {
     display: none;
+}
+.no-menu.pagina{
+    .sidebar{
+        margin-left: -20rem;
+    }
 }
 .pagina{
     min-height: 100%;
@@ -70,6 +76,10 @@ img {
         padding: 1rem;
         i{
             color: $blanco;
+            font-size: 1.5rem;
+        }
+        .fa-arrow-right{
+            display: none;
         }
     }
     .menu-derecho{
@@ -95,15 +105,11 @@ img {
     }
 }
 
-.contenedor-principal{
-    display: flex;
-    flex: 1;
-    
-}
 .sidebar{
     background-color: $grisOscuro;
     flex: 0 0 20rem;
     padding: 1rem;
+    transition: margin-left .3s ease;
 
     .usuario{
         display: flex;
@@ -167,6 +173,63 @@ img {
                     }
 
                 }
+            }
+        }
+    }
+}
+
+.contenedor-principal{
+    display: flex;
+    flex: 1;
+    
+}
+.contenido{
+    flex: 1;
+    padding: 2rem;
+}
+
+.formulario{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .campo{
+        flex: 0 0 100%;
+        @include tablet{
+            flex: 0 0 calc(50% - 1rem);
+        }
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        &.expandir{
+            flex: 0 0 calc(100%);
+            align-items: flex-start;
+            label{
+                flex: 0 0 12.5%
+            }
+            textarea{
+                flex: 1;
+            }
+        }
+        label{
+            flex: 0 0 25%;
+        }
+        input[type="text"]{
+            flex: 0 0 75%;
+            height: 2rem;
+        }
+        .opciones{
+            display: flex;
+            flex: 1;
+            label{
+                padding-left: 1rem;
+            }
+        }
+        &.enviar{
+            display: flex;
+            justify-content: flex-end;
+            .boton{
+                @include boton($primario)
             }
         }
     }
